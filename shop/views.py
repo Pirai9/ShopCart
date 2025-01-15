@@ -8,7 +8,7 @@ import json
 
 
 def home(request):
-    products = Product.objects.filter(trending=1)
+    products = Product.objects.filter(trending=True)
     return render(request, "shop/index.html", {"products": products})
 
 
@@ -103,7 +103,7 @@ def login_page(request):
             else:
                 messages.error(request, "Invalid User Name or Password")
                 return redirect("/login")
-        return render(request, "shop/login.html")
+        return render(request, "shop/Login.html")
 
 
 def register(request):
@@ -114,12 +114,12 @@ def register(request):
             form.save()
             messages.success(request, "Registration Success You can Login Now..!")
             return redirect('/login')
-    return render(request, "shop/register.html", {'form': form})
+    return render(request, "shop/Register.html", {'form': form})
 
 
 def collections(request):
     catagory = Catagory.objects.filter(status=0)
-    return render(request, "shop/collections.html", {"catagory": catagory})
+    return render(request, "shop/collection.html", {"catagory": catagory})
 
 
 def collectionsview(request, name):
@@ -135,7 +135,7 @@ def product_details(request, cname, pname):
     if (Catagory.objects.filter(name=cname, status=0)):
         if (Product.objects.filter(name=pname, status=0)):
             products = Product.objects.filter(name=pname, status=0).first()
-            return render(request, "shop/products/product_details.html", {"products": products})
+            return render(request, "shop/products/Product_Details.html", {"products": products})
         else:
             messages.error(request, "No Such Produtct Found")
             return redirect('collections')

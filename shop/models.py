@@ -1,6 +1,7 @@
 from django.db import models
 import datetime
 import os
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -29,6 +30,7 @@ class Product(models.Model):
     selling_price=models.FloatField(null=False,blank=False)
     product_image=models.ImageField(upload_to=getFileName,null=True,blank=True)
     description=models.TextField(max_length=500,null=False,blank=False)
+    trending = models.BooleanField(default=False)
     status=models.BooleanField(default=False,help_text="0-show,1-Hidden")
     created_at=models.DateTimeField(auto_now_add=True)
 
