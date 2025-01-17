@@ -15,7 +15,7 @@ def home(request):
 def favviewpage(request):
     if request.user.is_authenticated:
         fav = Favourite.objects.filter(user=request.user)
-        return render(request, "shop/fav.html", {"fav": fav})
+        return render(request, "shop/Fav.html", {"fav": fav})
     else:
         return redirect("/")
 
@@ -29,7 +29,7 @@ def remove_fav(request, fid):
 def cart_page(request):
     if request.user.is_authenticated:
         cart = Cart.objects.filter(user=request.user)
-        return render(request, "shop/cart.html", {"cart": cart})
+        return render(request, "shop/Cart.html", {"cart": cart})
     else:
         return redirect("/")
 
@@ -135,7 +135,7 @@ def product_details(request, cname, pname):
     if (Catagory.objects.filter(name=cname, status=0)):
         if (Product.objects.filter(name=pname, status=0)):
             products = Product.objects.filter(name=pname, status=0).first()
-            return render(request, "shop/products/Product_Details.html", {"products": products})
+            return render(request, "shop/Products/Product_Details.html", {"products": products})
         else:
             messages.error(request, "No Such Produtct Found")
             return redirect('collections')

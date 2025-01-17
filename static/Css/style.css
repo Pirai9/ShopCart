@@ -6,14 +6,16 @@ html {
 body {
   font-family: 'Noto Sans', sans-serif;
 }
+
 a {
   text-decoration: none;
+  color:black
 }
 
 .carousel-item img {
   object-fit: cover;
   object-position: top;
-  height: 60vh;
+  height: 80vh;
   overflow: hidden;
 }
 
